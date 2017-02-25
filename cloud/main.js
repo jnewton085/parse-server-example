@@ -3,7 +3,7 @@ Parse.Cloud.define('hello', function(req, res) {
   res.success('Hi');
 });
 
-Parse.Cloud.define('resetPassword', function(req, res) {
+Parse.Cloud.define('resetPassword', function(request, response) {
 	var query = new Parse.query("_User");
 	query.get(request.params.userId, {userMasterKey: true }).then((user) {
 		user.setPassword(request.params.newPassword);
