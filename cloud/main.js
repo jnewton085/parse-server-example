@@ -13,7 +13,7 @@ Parse.Cloud.define('resetPassword', function(req, res) {
 		user.setPassword(req.params.newPassword);
 		return user.save(null, {useMasterKey: true});
 	}).then((user) => {
-		    res.success(JSON.stringify(user))
+		    res.success('Reset password successfully')
 		}, (obj, error) => {
 		    res.error(error.message);
 	    });
