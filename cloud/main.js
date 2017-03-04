@@ -8,7 +8,7 @@ Parse.Cloud.define('hello2', function(req, res) {
     });
 
 Parse.Cloud.define('resetPassword', function(req, res) {
-	var query = new Parse.query('_User');
+	var query = new Parse.Query('_User');
 	query.count({userMasterKey: true}).then( function(results) {
 		res.success(results);
 	    }, function(error) {
