@@ -8,7 +8,7 @@ Parse.Cloud.define('hello2', function(req, res) {
     });
 
 Parse.Cloud.define('resetPassword', function(req, res) {
-	var query = new Parse.query("_User");
+	var query = new Parse.query('_User');
 	res.success('HI3');
 	//	query.get(req.params.userId, {userMasterKey: true }).then((user) {
 	//	user.setPassword(req.params.newPassword);
