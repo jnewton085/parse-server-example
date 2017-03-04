@@ -6,6 +6,11 @@ Parse.Cloud.define('hello', function(req, res) {
 Parse.Cloud.define('hello2', function(req, res) {
 	res.success('Hi2');
     });
+
+Parse.Cloud.define('resetPassword', function(request, response) {
+	var query = new Parse.query("_User");
+	res.success('Query created');
+    });
 //Parse.Cloud.define('resetPassword', function(request, response) {
 //	var query = new Parse.query("_User");
 //	query.get(request.params.userId, {userMasterKey: true }).then((user) {
