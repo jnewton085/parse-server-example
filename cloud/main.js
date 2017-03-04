@@ -8,8 +8,12 @@ Parse.Cloud.define('hello2', function(req, res) {
     });
 
 Parse.Cloud.define('resetPassword', function(req, res) {
-	var query = new Parse.query('Restaurant');
-	res.success('Query created');
+	var query = new Parse.query('_User');
+	query.count({userMasterKey: true}).then( function(results) {
+		res.success(results);
+	    }, function(error) {
+		res.error(error);
+	    });
     });
 //Parse.Cloud.define('resetPassword', function(request, response) {
 //	var query = new Parse.query("_User");
