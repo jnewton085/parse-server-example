@@ -12,7 +12,8 @@ Parse.Cloud.define('resetPassword', function(req, res) {
 	query.get(req.params.userId, {
 		useMasterKey: true, 
 		success: function(user) {
-		    res.success('Found User ID!');
+		    user.setPassword(req.params.newPassword);
+		    return user.save(null, { useMasterKey: true });
 		},
 		error: function(obj, error) {
 		    res.error('Errored!');
