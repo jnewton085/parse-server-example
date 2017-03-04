@@ -13,9 +13,9 @@ Parse.Cloud.define('resetPassword', function(req, res) {
 		useMasterKey: true, 
 		success: function(user) {
 		    res.success('Found User ID!');
-		}
+		},
 		error: function(obj, error) {
-		    res.error(error.message);
+		    res.error('Errored!');
 		}
 	    });
 });
