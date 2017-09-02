@@ -7,17 +7,31 @@ Parse.Cloud.define('hello2', function(req, res) {
 	res.success('Hi2');
     });
 
-Parse.Cloud.define('resetPassword', function(req, res) {
-	var query = new Parse.Query('_User');
-	query.get(req.params.userId, {
-		useMasterKey: true, 
-		success: function(user) {
-		    user.setPassword(req.params.newPassword);
-		    user.save(null, { useMasterKey: true });
-		    res.success('Saved User! '+req.params.userId+req.params.newPassword)
-		},
-		error: function(obj, error) {
-		    res.error('Errored!');
-		}
-	    });
-});
+Parse.Cloud.define("changeUserPassword", function(request, response) {
+                   // Set up to modify user data
+                   Parse.Cloud.useMasterKey();
+                   var query = new Parse.Query(Parse.User);
+                   query.equalTo("username", request.params.username);  // find all the women
+                   query.first({
+                               success: function(myUser) {
+                               // Successfully retrieved the object.
+                               myUser.set("password", request.params.newPassword);
+                               
+                               myUser.save(null, {
+                                           success: function(myUser) {
+                                           // The user was saved successfully.
+                                           response.success("Successfully updated user.");
+                                           },
+                                           error: function(myUser, error) {
+                                           // The save failed.
+                                           // error is a Parse.Error with an error code and description.
+                                           response.error("Could not save changes to user.");
+                                           }
+                                           });
+                               
+                               },
+                               error: function(error) {
+                               alert("Error: " + error.code + " " + error.message);
+                               }
+                               });
+                   });
