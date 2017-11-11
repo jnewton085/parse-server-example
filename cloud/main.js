@@ -8,7 +8,7 @@ Parse.Cloud.define('hello2', function(req, res) {
     });
 
 Parse.Cloud.define('test_email', function(req, res) {
-	var mailgun = require('mailgun.js');
+	/*var mailgun = require('mailgun.js');
 	var mg = mailgun.client({username: 'api', key: process.env.MAILGUN_KEY});
 	mg.messages.create(process.env.DOMAIN, { 
 		from: process.env.MAILGUN_FROM_ADDRESS,
@@ -16,7 +16,7 @@ Parse.Cloud.define('test_email', function(req, res) {
 		    subject: "Hellow",
 		    text: "orld",
 		    html: "<h1> Just testing out ye olde mailgun </h1>"
-		    }).then(msg => console.log(msg)).catch(err => res.error(err));
+		    }).then(msg => console.log(msg)).catch(err => res.error(err));*/
 	res.success('Yes!');
     });
 Parse.Cloud.define("changeUserPassword", function(request, response) {
