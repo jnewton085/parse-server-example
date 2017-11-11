@@ -9,8 +9,8 @@ Parse.Cloud.define('hello2', function(req, res) {
 
 Parse.Cloud.define('test_email', function(req, res) {
 	var mailgun = require('mailgun.js');
-	/*var mg = mailgun.client({username: 'api', key: process.env.MAILGUN_KEY});
-	mg.messages.create(process.env.DOMAIN, { 
+	var mg = mailgun.client({username: 'api', key: process.env.MAILGUN_KEY});
+	/*mg.messages.create(process.env.DOMAIN, { 
 		from: process.env.MAILGUN_FROM_ADDRESS,
 		    to: ["jeremynewt@gmail.com"],
 		    subject: "Hellow",
