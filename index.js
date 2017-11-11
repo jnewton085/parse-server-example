@@ -4,12 +4,7 @@
 var express = require('express');
 var ParseServer = require('parse-server').ParseServer;
 var path = require('path');
-var SimpleMailgunAdapter = require('parse-server-simple-mailgun-adapter');
-var simpleMailgunAdapter = new SimpleMailgunAdapter({
-                                                    apiKey: process.env.MAILGUN_KEY || '',
-                                                    domain: process.env.DOMAIN || '',
-                                                    fromAddress: process.env.MAILGUN_FROM_ADDRESS || '',
-    })
+//var SimpleMailgunAdapter = require('parse-server-simple-mailgun-adapter');
 						    
 var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
 
@@ -26,7 +21,17 @@ var api = new ParseServer({
   //verifyUserEmails: true,
   publicServerURL: process.env.PUBLIC_SERVER_URL || 'http://localhost:1337/parse',
   appName: process.env.APP_NAME || '<your app name?',
-  //emailAdapter: {module: 'parse-server-simple-mailgun-adapter', options: {fromAddress: process.env.MAILGUN_FROM_ADRESS, domain: process.env.DOMAIN, apiKey: process.env.MAILGUN_KEY}},
+  emailAdapter: {
+	    module: 'parse-server-simple-mailgun-adapter',
+	    options: {
+		// The address that your emails come from
+		fromAddress: process.env.MAILGUN_FROM_ADDRESS,
+		// Your domain from mailgun.com
+		domain: process.env.DOMAIN,
+		// Your API key from mailgun.com
+		apiKey: process.env.MAILGUN_KEY,
+	    }
+	},
   liveQuery: {
     classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
   }
