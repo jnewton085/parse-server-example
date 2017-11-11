@@ -8,7 +8,7 @@ Parse.Cloud.define('hello2', function(req, res) {
     });
 
 Parse.Cloud.define('test_email', function(req, res) {
-	var SimpleMailgunAdapter = require('parse-server/lib/Adapters/Email/SimpleMailgunAdapter');
+	//var SimpleMailgunAdapter = require('parse-server/lib/Adapters/Email/SimpleMailgunAdapter');
 	/*var mg = new SimpleMailgunAdapter({
 		apiKey: process.env.MAILGUN_KEY,
 		domain: process.env.DOMAIN,
