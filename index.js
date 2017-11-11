@@ -4,13 +4,13 @@
 var express = require('express');
 var ParseServer = require('parse-server').ParseServer;
 var path = require('path');
-var SimpleMailgunAdapter = require('parse-server/lib/Adapters/Email/SimpleMailgunAdapter');
-var simpleMailgunAdapter = new SimpleMailgunAdapter({
-                                                    apiKey: process.env.MAILGUN_KEY || '',
-                                                    domain: process.env.DOMAIN || '',
-                                                    fromAddress: process.env.MAILGUN_FROM_ADDRESS || '',
-                                                    })}
-})
+//var SimpleMailgunAdapter = require('parse-server/lib/Adapters/Email/SimpleMailgunAdapter');
+//var simpleMailgunAdapter = new SimpleMailgunAdapter({
+//                                                    apiKey: process.env.MAILGUN_KEY || '',
+//                                                    domain: process.env.DOMAIN || '',
+//                                                    fromAddress: process.env.MAILGUN_FROM_ADDRESS || '',
+//                                                    })}
+//})
 var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
 
 if (!databaseUri) {
@@ -23,9 +23,9 @@ var api = new ParseServer({
   appId: process.env.APP_ID || 'myAppId',
   masterKey: process.env.MASTER_KEY || '', //Add your master key here. Keep it secret!
   serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse',  // Don't forget to change to https if needed
-  publicServerURL: process.env.PUBLIC_SERVER_URL || 'http://localhost:1337/parse',
-  appName: process.env.APP_NAME || '<your app name?',
-  emailAdapter: {module: 'parse-server-simple-mailgun-adapter', options: {fromAddress: process.env.MAILGUN_FROM_ADRESS, domain: process.env.DOMAIN, apiKey: process.env.MAILGUN_KEY, },
+  //publicServerURL: process.env.PUBLIC_SERVER_URL || 'http://localhost:1337/parse',
+  //appName: process.env.APP_NAME || '<your app name?',
+  //  emailAdapter: {module: 'parse-server-simple-mailgun-adapter', options: {fromAddress: process.env.MAILGUN_FROM_ADRESS, domain: process.env.DOMAIN, apiKey: process.env.MAILGUN_KEY, },
   liveQuery: {
     classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
   }
