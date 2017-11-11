@@ -26,7 +26,7 @@ var api = new ParseServer({
   //verifyUserEmails: true,
   publicServerURL: process.env.PUBLIC_SERVER_URL || 'http://localhost:1337/parse',
   appName: process.env.APP_NAME || '<your app name?',
-  //emailAdapter: {module: 'parse-server-simple-mailgun-adapter', options: {fromAddress: process.env.MAILGUN_FROM_ADRESS, domain: process.env.DOMAIN, apiKey: process.env.MAILGUN_KEY},
+  emailAdapter: {module: 'parse-server-simple-mailgun-adapter', options: {fromAddress: process.env.MAILGUN_FROM_ADRESS, domain: process.env.DOMAIN, apiKey: process.env.MAILGUN_KEY}},
   liveQuery: {
     classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
   }
