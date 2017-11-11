@@ -5,12 +5,12 @@ var express = require('express');
 var ParseServer = require('parse-server').ParseServer;
 var path = require('path');
 var SimpleMailgunAdapter = require('parse-server-simple-mailgun-adapter');
-/*var simpleMailgunAdapter = new SimpleMailgunAdapter({
+var simpleMailgunAdapter = new SimpleMailgunAdapter({
                                                     apiKey: process.env.MAILGUN_KEY || '',
                                                     domain: process.env.DOMAIN || '',
                                                     fromAddress: process.env.MAILGUN_FROM_ADDRESS || '',
-                                                    })}
-						    })*/
+    })
+						    
 var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
 
 if (!databaseUri) {
