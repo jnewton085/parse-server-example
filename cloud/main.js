@@ -14,10 +14,10 @@ Parse.Cloud.define('test_email', function(req, res) {
 		domain: process.env.DOMAIN,
 		fromAddress: process.env.MAILGUN_FROM_ADDRESS,
 	    })};
-    mg.send({
+    /*mg.send({
 	    subject: "final Test passed",
 		recipient: "jeremynewt@gmail.com",
-		})
+		})*/
     });
 Parse.Cloud.define("changeUserPassword", function(request, response) {
                    // Set up to modify user data
