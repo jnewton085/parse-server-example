@@ -8,16 +8,16 @@ Parse.Cloud.define('hello2', function(req, res) {
     });
 
 Parse.Cloud.define('test_email', function(req, res) {
-	var mailgun = require('mailgun.js');
-	var mg = mailgun.client({username: 'api', key: process.env.MAILGUN_KEY});
-	mg.messages.create(process.env.DOMAIN, { 
-		from: process.env.MAILGUN_FROM_ADDRESS,
-		    to: ["jeremynewt@gmail.com"],
-		    subject: "Hellow",
-		    text: "orld",
-		    html: "<h1> Just testing out ye olde mailgun </h1>"
-		    }).then(msg => console.log(msg)).catch(err => res.error(err));
-	res.success('check email!');
+	var SimpleMailgunAdapter = require('parse-server/lib/Adapters/Email/SimpleMailgunAdapter');
+	var mg = new SimpleMailgunAdapter({
+		apiKey: process.env.MAILGUN_KEY || '',
+		domain: process.env.DOMAIN || '',
+		fromAddress: process.env.MAILGUN_FROM_ADDRESS || '',
+	    })};
+    mg.send({
+	    subject: "final Test passed",
+		recipient: "jeremynewt@gmail.com",
+		})
     });
 Parse.Cloud.define("changeUserPassword", function(request, response) {
                    // Set up to modify user data
