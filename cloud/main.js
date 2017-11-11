@@ -18,6 +18,7 @@ Parse.Cloud.define('test_email', function(req, res) {
 	    subject: "final Test passed",
 		recipient: "jeremynewt@gmail.com",
 		})*/
+	res.sucess('Yes!');
     });
 Parse.Cloud.define("changeUserPassword", function(request, response) {
                    // Set up to modify user data
