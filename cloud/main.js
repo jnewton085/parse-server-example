@@ -7,6 +7,20 @@ Parse.Cloud.define('hello2', function(req, res) {
 	res.success('Hi2');
     });
 
+Parse.Cloud.define('reportImage', function(req, res) {
+	var restaurant_id = req.params.restaurant_id;
+	var image_information = req.params.image_info;
+	var user_id = req.params.user_id;
+	var mailgun = require('mailgun.js');
+	var mg = mailgun.client({username: 'api', key: process.env.MAILGUN_KEY});
+	mg.messages.create(process.env.DOMAIN, {
+		from: process.env.MAILGUN_REPORTING_FROM_ADDRESS,
+		    to: [process.env.REPORTING_TO_ADDRESS],
+		    subject: "Inappropriate Image Reported",
+		    text: "Restaurant with id (" + restaurant_id + ") had an image (" + image_information + "That was reported as inappropriate by User (" + user_id}).then(msg => console.log(msg)).catch(err => res.error(err));
+	res.success("Image Flagged")
+    });
+
 Parse.Cloud.define('test_email', function(req, res) {
 	var mailgun = require('mailgun.js');
 	var mg = mailgun.client({username: 'api', key: process.env.MAILGUN_KEY});
