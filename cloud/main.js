@@ -17,9 +17,25 @@ Parse.Cloud.define('reportImage', function(req, res) {
 		from: process.env.MAILGUN_REPORTING_FROM_ADDRESS,
 		    to: [process.env.REPORTING_TO_ADDRESS],
 		    subject: "Inappropriate Image Reported",
-		    text: "Restaurant with id (" + restaurant_id + ") had an image (" + image_information + "That was reported as inappropriate by User (" + user_id}).then(msg => console.log(msg)).catch(err => res.error(err));
+		    text: "Restaurant with id (" + restaurant_id + ") had an image (" + image_information + ") that was reported as inappropriate by User (" + user_id + ")"}).then(msg => console.log(msg)).catch(err => res.error(err));
 	res.success("Image Flagged")
     });
+
+Parse.Cloud.define('reportTip', function(req, res) {
+        var restaurant_id = req.params.restaurant_id;
+        var tip_string = req.params.tip_string;
+        var user_id = req.params.user_id;
+        var mailgun = require('mailgun.js');
+        var mg = mailgun.client({username: 'api', key: process.env.MAILGUN_KEY});
+        mg.messages.create(process.env.DOMAIN, {
+                from: process.env.MAILGUN_REPORTING_FROM_ADDRESS,
+                    to: [process.env.REPORTING_TO_ADDRESS],
+                    subject: "Inappropriate Tip Reported",
+                    text: "Restaurant with id (" + restaurant_id + ") had a tip (" + tip_string + ") That was reported as inappropriate by User (" + u\
+		    ser_id + ")"}).then(msg => console.log(msg)).catch(err => res.error(err));
+        res.success("Tip Flagged")
+	    });
+
 
 Parse.Cloud.define('test_email', function(req, res) {
 	var mailgun = require('mailgun.js');
