@@ -31,8 +31,7 @@ Parse.Cloud.define('reportTip', function(req, res) {
                 from: process.env.MAILGUN_REPORTING_FROM_ADDRESS,
                     to: [process.env.REPORTING_TO_ADDRESS],
                     subject: "Inappropriate Tip Reported",
-                    text: "Restaurant with id (" + restaurant_id + ") had a tip (" + tip_string + ") That was reported as inappropriate by User (" + u\
-		    ser_id + ")"}).then(msg => console.log(msg)).catch(err => res.error(err));
+                    text: "Restaurant with id (" + restaurant_id + ") had a tip (" + tip_string + ") That was reported as inappropriate by User (" + user_id + ")"}).then(msg => console.log(msg)).catch(err => res.error(err));
         res.success("Tip Flagged")
 	    });
 
