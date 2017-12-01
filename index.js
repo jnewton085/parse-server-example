@@ -3,7 +3,7 @@
 
 var express = require('express');
 var ParseServer = require('parse-server').ParseServer;
-var ParseDashboard = require('parse-dashboard');
+//var ParseDashboard = require('parse-dashboard');
 
 var path = require('path');
 //var SimpleMailgunAdapter = require('parse-server-simple-mailgun-adapter');
@@ -14,7 +14,7 @@ if (!databaseUri) {
   console.log('DATABASE_URI not specified, falling back to localhost.');
 }
 
-var dashboard = new ParseDashboard({
+/*var dashboard = new ParseDashboard({
 	"apps": [ {
 		"serverURL": process.env.SERVER_URL || 'http://localhost:1337/parse',
 		"appId": process.env.APP_ID,
@@ -22,7 +22,7 @@ var dashboard = new ParseDashboard({
 		"appName": process.env.APP_NAME
 	    }]
     });
-
+*/
 var api = new ParseServer({
   databaseURI: databaseUri || 'mongodb://localhost:27017/dev',
   cloud: process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js',
@@ -57,7 +57,7 @@ var app = express();
 app.use('/public', express.static(path.join(__dirname, '/public')));
 
 // Serve the parse dashboard
-app.use('/dashboard', dashboard)
+//app.use('/dashboard', dashboard)
 
 // Serve the Parse API on the /parse URL prefix
 var mountPath = process.env.PARSE_MOUNT || '/parse';
