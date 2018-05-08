@@ -13,6 +13,7 @@
     "kerberos": "~0.0.x",
     "parse": "~1.8.0",
     "parse-server": "~2.2.12",
+    "parse-dashboard": "~1.1.2",
     "mailgun.js": "~2.0.1",
     "parse-server-simple-mailgun-adapter": "~1.0.1"
   },

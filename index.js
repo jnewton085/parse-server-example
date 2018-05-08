@@ -29,8 +29,23 @@ var api = new ParseServer({
   appId: process.env.APP_ID || 'myAppId',
   masterKey: process.env.MASTER_KEY || '', //Add your master key here. Keep it secret!
   serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse',  // Don't forget to change to https if needed
+                          
   //verifyUserEmails: true,
   publicServerURL: process.env.PUBLIC_SERVER_URL || 'http://localhost:1337/parse',
+  push: {
+                          ios: [
+                          {
+                                pfx: 'iPhone Developer: monica.zamiska@gmai.com (GU64UH4935).p12' ,
+                                bundleId: 'com.confoodant.V10',
+                                production: false
+                          },
+                                {
+                                pfx: 'iPhone Developer: monica.zamiska@gmai.com (GU64UH4935).p12' ,
+                                bundleId: 'com.confoodant.V10',
+                                production: true
+                                }
+                          ]
+        }
   appName: process.env.APP_NAME || '<your app name?',
   emailAdapter: {
 	    module: 'parse-server-simple-mailgun-adapter',
