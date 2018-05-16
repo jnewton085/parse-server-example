@@ -23,7 +23,7 @@ Parse.Cloud.define("pushToUser", function(request, response) {
                                    success: function() {
                                     // Push was successful
                                     console.log("Message was sent successfully")
-                                   response.success('true');
+                                   response.success("Message was sent sucessfully");
                                    },
                                    error: function(error) {
                                     response.error(error);
