@@ -10,7 +10,7 @@ Parse.Cloud.define("pushToUser", function(request, response) {
                    }
         
                    var user_query = new Parse.Query(Parse.User);
-                   user_query.equalTo("user", recipient_id);
+                   user_query.equalTo("objectId", recipient_id);
                    var push_query = new Parse.Query(Parse.Installation);
                    push_query.matchesQuery("user", user_query);
 
