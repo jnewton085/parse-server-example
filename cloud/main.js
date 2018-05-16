@@ -13,7 +13,7 @@ Parse.Cloud.define("pushToUser", function(request, response) {
                    user_query.equalTo("user", recipient_id);
                    var push_query = new Parse.Query(Parse.Installation);
                    push_query.matchesQuery("user", user_query);
-                   response.error("Preparing to push" + message + " to " + recipient_id);
+
 		   Parse.Push.send({
                                     where: push_query,
                                     data: {
