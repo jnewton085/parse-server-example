@@ -17,7 +17,7 @@ Parse.Cloud.define("pushToUser", function(request, response) {
                                     data: {
                                         alert: message
                                     }
-                                   }, {
+		       }, {useMasterKey: true}, {
                                    success: function() {
                                     // Push was successful
                                     console.log("Message was sent successfully")
