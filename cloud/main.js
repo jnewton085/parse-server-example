@@ -1,6 +1,8 @@
 Parse.Cloud.define("pushToUser", function(request, response) {
-                   var message = request.params.message;
-                   var recipient_id = request.params.recipient_user_id;
+        var message = request.params.message;
+        var recipient_id = request.params.recipient_user_id;
+	response.error("Something wrong with input");
+	return;
                    if (message != null && message !=="") {
                     message = message.trim();
                    } else {
