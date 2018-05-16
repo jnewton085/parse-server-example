@@ -27,9 +27,9 @@ Parse.Cloud.define("pushToUser", function(request, response) {
                                    },
                                    error: function(error) {
                                     response.error(error);
-                                   }
-		       }, 
-		       { useMasterKey: true });
+			           },
+			           useMasterKey: true
+			       });
 });
 
 Parse.Cloud.define('hello', function(req, res) {
