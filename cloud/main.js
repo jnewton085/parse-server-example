@@ -1,20 +1,20 @@
 Parse.Cloud.define("pushToUser", function(request, response) {
         var message = request.params.message;
         var recipient_id = request.params.recipient_user_id;
-	response.error("Something wrong with input");
-	return;
+	
                    if (message != null && message !=="") {
                     message = message.trim();
                    } else {
                     response.error("Must provide \"message\" in JSON Data");
                     return;
                    }
-                   
+        
                    var user_query = new Parse.Query(Parse.User);
                    user_query.equalTo("user", recipient_id);
                    var push_query = new Parse.Query(Parse.Installation);
                    push_query.matchesQuery("user", user_query);
-                   Parse.Push.send({
+                   response.error("Preparing to push" + message + " to " + recipient_id);
+		   Parse.Push.send({
                                     where: push_query,
                                     data: {
                                         alert: message
