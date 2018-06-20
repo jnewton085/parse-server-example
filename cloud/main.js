@@ -32,6 +32,24 @@ Parse.Cloud.define("pushToUser", function(request, response) {
 			       });
 });
 
+Parse.Cloud.define("pushToAll", function(request, response) {
+	var push_query = new Parse.Query(Parse.Installation);
+	Parse.Push.send({
+		where: pushQuery,
+		    data: {
+		    "alert": message.trim()
+			}
+	    }, {
+		success: function() {
+		    console.log("Push To All Sent Successfully");
+		    response.success('true');
+		},
+		    error: function(error) {
+		    response.error(error);
+		}
+		, useMasterKey: true});
+    });
+
 Parse.Cloud.define('hello', function(req, res) {
   res.success('Hi');
 });
