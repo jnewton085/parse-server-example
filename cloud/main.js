@@ -33,22 +33,37 @@ Parse.Cloud.define("pushToUser", function(request, response) {
 });
 
 Parse.Cloud.define("pushToAll", function(request, response) {
+        var message = request.params.message;
+        var recipient_id = request.params.recipient_user_id;
+
+	if (message != null && message !=="") {
+	    message = message.trim();
+	} else {
+	    response.error("Must provide \"message\" in JSON Data");
+	    return;
+	}
+
 	var push_query = new Parse.Query(Parse.Installation);
+	push_query.equalTo('deviceType', 'ios');
+
 	Parse.Push.send({
-		where: pushQuery,
+		where: push_query,
 		    data: {
-		    "alert": message.trim()
+		    alert: {title: "Myh Alert", body: message}
 			}
 	    }, {
 		success: function() {
-		    console.log("Push To All Sent Successfully");
-		    response.success('true');
+		    // Push was successful                                                                                                                                           
+		    console.log("Message was sent successfully")
+			response.success("Message was sent sucessfully");
 		},
 		    error: function(error) {
 		    response.error(error);
-		}
-		, useMasterKey: true});
+		},
+		    useMasterKey: true
+		    });
     });
+
 
 Parse.Cloud.define('hello', function(req, res) {
   res.success('Hi');
