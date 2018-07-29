@@ -31,7 +31,7 @@ var api = new ParseServer({
   serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse',  // Don't forget to change to https if needed
   push: {
 	    ios: {
-		pfx: path.join(__dirname, '/PushCertificates.p12'),
+		pfx: path.join(__dirname, '/Push_Cert_DEV.p12'),
 		passphrase: '',
 		bundleId: 'com.confoodant.V10',
 		production: true
