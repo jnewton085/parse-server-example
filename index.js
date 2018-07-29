@@ -34,7 +34,7 @@ var api = new ParseServer({
 		pfx: path.join(__dirname, '/Push_Cert_DEV.p12'),
 		passphrase: '',
 		bundleId: 'com.confoodant.V10',
-		production: true
+		production: false
 	    }
 	},
   publicServerURL: process.env.PUBLIC_SERVER_URL || 'http://localhost:1337/parse',
