@@ -10,14 +10,14 @@ Parse.Cloud.define("pushToUser", function(request, response) {
                    }
         
                    var user_query = new Parse.Query(Parse.User);
-                   user_query.equalTo("user", recipient_id);
+                   user_query.equalTo("id", recipient_id);
                    var push_query = new Parse.Query(Parse.Installation);
                    push_query.matchesQuery("user", user_query);
 
 		   Parse.Push.send({
                                     where: push_query,
                                     data: {
-                                        alert: message
+                           alert: {title: "Single User Message", body: message}
                                     }
 		       }, {
                                    success: function() {
