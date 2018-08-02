@@ -30,12 +30,20 @@ var api = new ParseServer({
   masterKey: process.env.MASTER_KEY || '', //Add your master key here. Keep it secret!
   serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse',  // Don't forget to change to https if needed
   push: {
-	    ios: {
+	    ios: [
+                {
 		pfx: path.join(__dirname, '/Push_Cert_DEV.p12'),
 		passphrase: '',
 		bundleId: 'com.confoodant.V10',
 		production: false
-	    }
+	        },
+                {
+		    pfx: path.join(__dirname, '/PushCertificates.p12'),
+		    passpharse: '',
+		    bundleId: 'com.confoodant.V10',
+		    production: true
+		}
+		]
 	},
   publicServerURL: process.env.PUBLIC_SERVER_URL || 'http://localhost:1337/parse',
   appName: process.env.APP_NAME || '<your app name?',
